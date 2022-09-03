@@ -1,11 +1,11 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
-type Response<Theme> = [
-  Theme,
-  Dispatch<SetStateAction<Theme>>
-]
+type Response<Theme> = [Theme, Dispatch<SetStateAction<Theme>>]
 
-export function useThemeLocal<Theme>(key: string, initialState: any): Response<Theme> {
+export function useThemeLocal<Theme>(
+  key: string,
+  initialState: Theme
+): Response<Theme> {
   const [themeState, setThemeState] = useState(() => {
     const storageValue = localStorage.getItem(key)
 

@@ -10,6 +10,9 @@ declare module 'styled-components' {
 
       font100: string
       font200: string
+
+      pressable: string
+      alert: string
     }
   }
 }

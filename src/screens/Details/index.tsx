@@ -1,11 +1,11 @@
 import * as Component from '../../components'
 import * as S from './styles'
 
-export function Home() {
+export function Details() {
   return (
-    <S.HomeContainer>
+    <S.DetailsContainer>
       <Component.Header />
-      <Component.Psychonauts />
-    </S.HomeContainer>
+      <Component.CharacterDetails />
+    </S.DetailsContainer>
   )
 }

@@ -4,7 +4,7 @@ import { dark, light } from '../Theme'
 import { useThemeLocal } from '../utils/useThemeLocal'
 
 type ContextProps = {
-  theme: any
+  theme: DefaultTheme
   handleChangeTheme: () => void
 }
 
@@ -15,8 +15,7 @@ type ProviderProps = {
 export const ThemeContext = React.createContext({} as ContextProps)
 
 export const ThemeUsageProvider = ({ children }: ProviderProps) => {
-
-  const [theme, setTheme] = useThemeLocal<DefaultTheme>('theme',dark)
+  const [theme, setTheme] = useThemeLocal<DefaultTheme>('theme', dark)
 
   function handleChangeTheme() {
     setTheme(theme.title === 'dark' ? light : dark)

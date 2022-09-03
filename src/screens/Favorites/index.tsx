@@ -1,19 +1,11 @@
-import styled from "styled-components";
-import * as Component from "../../components";
+import * as Component from '../../components'
+import * as S from './styles'
 
-export function Favorites(){
-  return(
-    <FavoritesContainer>
+export function Favorites() {
+  return (
+    <S.FavoritesContainer>
       <Component.Header />
-      <p>Tela de todos favoritos</p>
-    </FavoritesContainer>
+      <Component.PsychonautsFavorites />
+    </S.FavoritesContainer>
   )
 }
-
-const FavoritesContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100vw;
-`

@@ -11,32 +11,36 @@ export function Header() {
 
   return (
     <S.HeaderContainer>
-      <S.ContentBox>
-        <S.LogoPsychonauts src="psychonauts-logo.png" alt="Psychonauts" />
+      <S.HeaderBox>
+        <S.ContentBox>
+          <S.LogoPsychonauts src="psychonauts-logo.png" alt="Psychonauts" />
 
-        <S.OptionsBox>
-          <S.LinkOption to='/'>
-            <Person />
-            Personagens
-          </S.LinkOption>
-          <S.LinkOption to='/favorites'>
-            <Star />
-            Favoritos
-          </S.LinkOption>
-        </S.OptionsBox>
-      </S.ContentBox>
+          <S.OptionsBox>
+            <S.LinkOption to="/">
+              <Person />
+              Personagens
+            </S.LinkOption>
+            <S.LinkOption to="/favorites">
+              <Star />
+              Favoritos
+            </S.LinkOption>
+          </S.OptionsBox>
+        </S.ContentBox>
 
-      <Switch
-        onChange={handleChangeTheme}
-        checked={title === 'light'}
-        checkedIcon={false}
-        uncheckedIcon={false}
-        height={16}
-        width={32}
-        handleDiameter={20}
-        offColor={colors.font200}
-        onColor={colors.font200}
-      />
+        <S.SwitchBox>
+          <Switch
+            onChange={handleChangeTheme}
+            checked={title === 'light'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={16}
+            width={32}
+            handleDiameter={20}
+            offColor={colors.font200}
+            onColor={colors.font200}
+          />
+        </S.SwitchBox>
+      </S.HeaderBox>
     </S.HeaderContainer>
   )
 }
