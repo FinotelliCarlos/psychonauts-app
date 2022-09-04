@@ -48,7 +48,10 @@ export const ContentDetails = styled.div`
 `
 
 export const PsychonautImage = styled.img`
-  width: 25vw;
+  width: 100%;
+  max-width: 12rem;
+  height: 100%;
+  max-height: 15rem;
   border-radius: 0.4rem;
 `
 
