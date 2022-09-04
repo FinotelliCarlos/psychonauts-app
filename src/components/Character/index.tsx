@@ -1,6 +1,7 @@
-import { DotsThreeOutlineVertical } from 'phosphor-react'
+import { DotsThreeOutlineVertical, GenderIntersex, HandFist, IdentificationCard } from 'phosphor-react'
 import { PsiPowersDTO } from '../../DTOs/CharacterPsychonautsDTO'
 import * as S from './styles'
+import * as Component from '../../components'
 
 type CardProps = {
   img: string
@@ -18,27 +19,11 @@ export function Character({ img, name, gender, psiPowers }: CardProps) {
     <S.CardContainer>
       <S.ContentBoxInCard>
         <S.DataCard>
+          <Component.InfoText subtitle='Nome:' title={`${nameOfPsychonaut}`} icon={IdentificationCard} />
 
-          <S.CardPsychonautInfo>
-            Nome:{' '}
-            <S.CardPsychonautData>
-              {`${nameOfPsychonaut}`}
-            </S.CardPsychonautData>
-          </S.CardPsychonautInfo>
+          <Component.InfoText subtitle='Gênero:' title={`${typeOfGender}`} icon={GenderIntersex} />
 
-          <S.CardPsychonautInfo>
-          Gênero:{' '}
-            <S.CardPsychonautData>
-              {`${typeOfGender}`}
-            </S.CardPsychonautData>
-          </S.CardPsychonautInfo>
-
-          <S.CardPsychonautInfo>
-            Total de poderes:{' '}
-            <S.CardPsychonautData>
-              {`${amountOfPowers}`}
-            </S.CardPsychonautData>
-          </S.CardPsychonautInfo>
+          <Component.InfoText subtitle='Poderes:' title={`${amountOfPowers}`} icon={HandFist} />
 
         </S.DataCard>
 

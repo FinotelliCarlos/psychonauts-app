@@ -1,7 +1,6 @@
-import { WarningCircle } from 'phosphor-react'
+import * as Component from '../../components'
 import { CharacterPsychonautsDTO } from '../../DTOs/CharacterPsychonautsDTO'
 import { useCharacter } from '../../hooks/useCharacter'
-import * as Component from '../../components'
 import * as S from './styles'
 
 export function Psychonauts() {
@@ -10,18 +9,14 @@ export function Psychonauts() {
   return (
     <S.PsychonautsContainer>
       <S.InputSearch
-        type="text"
+        type="search"
         placeholder="Busque o personagem desejado..."
         value={searchByName}
         onChange={e => setSearchByName(e.target.value.toLowerCase())}
       />
 
       {characters.length <= 0 ? (
-        <S.AlertBySearchName>
-
-          <WarningCircle /> Não há personagens com este nome...
-          
-        </S.AlertBySearchName>
+        <Component.Alert title='Não há personagens com este nome...' />
       ) : (
         <S.PsychonautsContentCards>
           {characters.map((item: CharacterPsychonautsDTO, index) => {

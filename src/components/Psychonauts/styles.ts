@@ -34,7 +34,7 @@ export const PsychonautsContentCards = styled.div`
   margin-bottom: 5rem;
 `
 
-export const AlertBySearchName = styled.span`
+export const Alert = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;

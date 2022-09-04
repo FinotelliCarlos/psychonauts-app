@@ -1,83 +1,96 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const CardContainer = styled.div`
+export const CharacterDetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 90%;
+  height: 100%;
+  background: ${props => props.theme.colors.primary};
+  border-radius: 0.7rem;
+
+  padding: 1rem;
+  margin: 1rem;
+
+  gap: 1rem;
+
+  @media screen and (max-width: 580px) {
+    flex-direction: column-reverse;
+  }
+`
+
+export const HeaderDetails = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-berween;
+  justify-content: flex-end;
+`
 
-  background: linear-gradient(
-    267deg,
-    rgba(108, 117, 125, 0.45841112323835786) 44%,
-    rgba(131, 139, 145, 1) 84%
-  );
-  border-radius: 0.6rem;
+export const BoxButtons = styled.div`
+  display: flex;
+  gap: 1rem;
 
+  @media screen and (max-width: 580px) {
+    flex-direction: column;
+  }
+`
+
+export const ContentDetails = styled.div`
   width: 100%;
-  max-width: 21rem;
-  height: 10rem;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   gap: 1rem;
 `
 
-export const PsychonautImg = styled.img`
-  width: 100%;
-  max-width: 7rem;
-  height: 100%;
-  max-height: 12rem;
-
-  border-radius: 0 0.6rem 0.6rem 0;
+export const PsychonautImage = styled.img`
+  width: 25vw;
+  border-radius: 0.4rem;
 `
 
-export const ContentBoxInCard = styled.div`
+export const PsychonautInfoBox = styled.div`
   display: flex;
   align-items: left;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
+  padding-left: 1rem;
+`
 
+export const PsychonautDetails = styled.div`
   width: 100%;
   height: 100%;
 
-  padding: 1rem 0.4rem;
-`
-
-export const DataCard = styled.div`
-  width: 100%;
-`
-
-export const CardPsychonautInfo = styled.p`
-  font-size: 1rem;
-  font-weight: 700;
-  color: ${props => props.theme.colors.font100};
-`
-
-export const CardPsychonautData = styled.span`
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: ${props => props.theme.colors.font200};
-`
-
-export const ButtonSeeMore = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+`
 
+export const PsychonautPsiPowers = styled.div`
   width: 100%;
-  height: 2.4rem;
+  height: 100%;
 
-  font-size: 1rem;
-  font-weight: 300;
-  text-decoration: none;
-  color: ${props => props.theme.colors.font100};
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+`
 
-  border: none;
+export const PsychonautPsiPowerBox = styled.div`
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  padding: 1rem;
+
   border-radius: 0.4rem;
 
-  background: ${props => props.theme.colors.pressable};
+  background: ${props => props.theme.colors.background};
+`
 
-  transition: all 0.2s;
-
-  :hover {
-    opacity: 0.8;
-  }
+export const PsychonautPsiPowerImage = styled.img`
+  width: 5.3rem;
 `

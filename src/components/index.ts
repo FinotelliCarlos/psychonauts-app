@@ -3,11 +3,17 @@ import { Psychonauts } from './Psychonauts'
 import { PsychonautsFavorites } from './PsychonautsFavorites'
 import { Character } from './Character'
 import { CharacterDetails } from './CharacterDetails'
+import { Alert } from './Alert'
+import { Button } from './Button'
+import { InfoText } from './InfoText'
 
 export {
-  Header,
-  Psychonauts,
+  Alert,
+  Button,
   Character,
-  PsychonautsFavorites,
-  CharacterDetails
+  CharacterDetails,
+  Header,
+  InfoText,
+  Psychonauts,
+  PsychonautsFavorites
 }

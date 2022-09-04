@@ -32,7 +32,7 @@ export const CharacterProvider = ({ children }: ProviderProps) => {
 
   useEffect(() => {
     getCharacters()
-  }, [])
+  }, [searchByName])
 
   return (
     <CharacterContext.Provider
