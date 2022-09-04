@@ -6,32 +6,40 @@ import * as S from './styles'
 export function Psychonauts() {
   const { characters, searchByName, setSearchByName } = useCharacter()
 
-  return (
-    <S.PsychonautsContainer>
-      <S.InputSearch
-        type="search"
-        placeholder="Busque o personagem desejado..."
-        value={searchByName}
-        onChange={e => setSearchByName(e.target.value.toLowerCase())}
-      />
+  if(!characters){
+    return <h1>Loading...</h1>
+  }
 
-      {characters.length <= 0 ? (
-        <Component.Alert title='Não há personagens com este nome...' />
-      ) : (
-        <S.PsychonautsContentCards>
-          {characters.map((item: CharacterPsychonautsDTO, index) => {
-            return (
-              <Component.Character
-                key={index}
-                img={item.img}
-                name={item.name}
-                gender={item.gender}
-                psiPowers={item.psiPowers}
-              />
-            )
-          })}
-        </S.PsychonautsContentCards>
+  return (
+    <>
+      {characters.length > 0 && (
+        <S.PsychonautsContainer>
+          <S.InputSearch
+            type="search"
+            placeholder="Busque o personagem desejado..."
+            value={searchByName}
+            onChange={e => setSearchByName(e.target.value.toLowerCase())}
+          />
+
+          {characters.length <= 0 ? (
+            <Component.Alert title="Não há personagens com este nome..." />
+          ) : (
+            <S.PsychonautsContentCards>
+              {characters.map((item: CharacterPsychonautsDTO, index) => {
+                return (
+                  <Component.Character
+                    key={index}
+                    img={item.img}
+                    name={item.name}
+                    gender={item.gender}
+                    psiPowers={item.psiPowers}
+                  />
+                )
+              })}
+            </S.PsychonautsContentCards>
+          )}
+        </S.PsychonautsContainer>
       )}
-    </S.PsychonautsContainer>
+    </>
   )
 }
