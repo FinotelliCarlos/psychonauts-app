@@ -11,20 +11,30 @@ import { CharacterPsychonautsDTO } from '../../DTOs/CharacterPsychonautsDTO'
 import { api } from '../../services/api'
 import * as Component from '../../components'
 import * as S from './styles'
+import { useFavorites } from '../../hooks/useFavorites'
 
 export function CharacterDetails() {
   const { name } = useParams()
+  const { favorites } = useFavorites()
 
-  const [singleCharacter, setSingleCharacter] = useState<CharacterPsychonautsDTO | null>(null)
+  const [singleCharacter, setSingleCharacter] =
+    useState<CharacterPsychonautsDTO | null>(null)
   const { isLoading, error } = useQuery('psychonautsData', async () => {
-    const response = await api.get<CharacterPsychonautsDTO>(`/characters?name=${name}`)
-    setSingleCharacter(response.data)
+    await api
+      .get<CharacterPsychonautsDTO>(`/characters?name=${name}`)
+      .then(res => setSingleCharacter(res.data))
   })
-  
+
+  // const characterExistsByFavorites = singleCharacter.filter(({character}:{character : CharacterPsychonautsDTO[]}) => character.name.toLowerCase().includes(favorites)) ? true : false
+
   const typeOfGender = singleCharacter?.gender === 'male' ? 'Macho' : 'Fêmea'
 
   if (isLoading) {
-    return <Component.Loading />
+    return (
+      <S.ContainerLoading>
+        <Component.Loading />
+      </S.ContainerLoading>
+    )
   }
 
   if (error) return <h1>{`An error has occurred: ${error}`}</h1>

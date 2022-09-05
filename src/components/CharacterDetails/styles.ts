@@ -101,3 +101,11 @@ export const PsychonautPsiPowerBox = styled.div`
 export const PsychonautPsiPowerImage = styled.img`
   width: 5.3rem;
 `
+
+export const ContainerLoading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80vh;
+`

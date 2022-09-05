@@ -43,3 +43,11 @@ export const Alert = styled.span`
   font-size: 1.4rem;
   color: ${props => props.theme.colors.alert};
 `
+
+export const ContainerLoading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80vh;
+`
