@@ -1,36 +1,33 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { CharacterPsychonautsDTO } from '../../DTOs/CharacterPsychonautsDTO'
-import { api } from '../../services/api'
-import * as Component from '../../components'
-import * as S from './styles'
+import { useState } from 'react'
+import { useQuery } from 'react-query'
 import {
   GenderIntersex,
   HandFist,
   IdentificationCard,
   TextAlignLeft
 } from 'phosphor-react'
+import { useParams } from 'react-router-dom'
+import { CharacterPsychonautsDTO } from '../../DTOs/CharacterPsychonautsDTO'
+import { api } from '../../services/api'
+import * as Component from '../../components'
+import * as S from './styles'
 
 export function CharacterDetails() {
   const { name } = useParams()
-  const [singleCharacter, setSingleCharacter] =
-    useState<CharacterPsychonautsDTO | null>(null)
 
+  const [singleCharacter, setSingleCharacter] = useState<CharacterPsychonautsDTO | null>(null)
+  const { isLoading, error } = useQuery('psychonautsData', async () => {
+    const response = await api.get<CharacterPsychonautsDTO>(`/characters?name=${name}`)
+    setSingleCharacter(response.data)
+  })
+  
   const typeOfGender = singleCharacter?.gender === 'male' ? 'Macho' : 'Fêmea'
 
-  async function handleGetSingleCharacter() {
-    const response = await api.get(`/characters?name=${name}`)
-    setSingleCharacter(response.data)
+  if (isLoading) {
+    return <Component.Loading />
   }
 
-  useEffect(() => {
-    handleGetSingleCharacter()
-  }, [name])
-  
-
-  if(!singleCharacter){
-    return <h1>Loading...</h1>
-  }
+  if (error) return <h1>{`An error has occurred: ${error}`}</h1>
 
   return (
     <S.CharacterDetailsContainer>
@@ -47,7 +44,7 @@ export function CharacterDetails() {
           <S.PsychonautInfoBox>
             <Component.InfoText
               subtitle="Nome:"
-              title={`${singleCharacter.name}`}
+              title={`${singleCharacter?.name}`}
               icon={IdentificationCard}
             />
             <Component.InfoText

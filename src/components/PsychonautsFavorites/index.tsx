@@ -1,7 +1,7 @@
 import { CharacterPsychonautsDTO } from '../../DTOs/CharacterPsychonautsDTO'
+import { useFavorites } from '../../hooks/useFavorites'
 import * as Component from '../../components'
 import * as S from './styles'
-import { useFavorites } from '../../hooks/useFavorites'
 
 export function PsychonautsFavorites() {
   const { favorites } = useFavorites()

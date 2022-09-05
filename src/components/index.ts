@@ -6,6 +6,7 @@ import { CharacterDetails } from './CharacterDetails'
 import { Alert } from './Alert'
 import { Button } from './Button'
 import { InfoText } from './InfoText'
+import { Loading } from './Loading'
 
 export {
   Alert,
@@ -15,5 +16,6 @@ export {
   Header,
   InfoText,
   Psychonauts,
-  PsychonautsFavorites
+  PsychonautsFavorites,
+  Loading
 }

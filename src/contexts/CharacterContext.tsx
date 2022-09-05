@@ -1,4 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { ReactNode, useState } from 'react'
+import { useQuery } from 'react-query'
 import { CharacterPsychonautsDTO } from '../DTOs/CharacterPsychonautsDTO'
 import { api } from '../services/api'
 
@@ -6,6 +7,7 @@ type ContextProps = {
   characters: CharacterPsychonautsDTO[]
   searchByName: string
   setSearchByName: (value: string) => void
+  isLoading: boolean
 }
 
 type ProviderProps = {
@@ -18,6 +20,11 @@ export const CharacterProvider = ({ children }: ProviderProps) => {
   const [psychonauts, setPsychonauts] = useState<CharacterPsychonautsDTO[]>([])
   const [searchByName, setSearchByName] = useState('')
 
+  const { isLoading } = useQuery('psychonautsData', async () => {
+    const response = await api.get<CharacterPsychonautsDTO[]>('/characters')
+    setPsychonauts(response.data)
+  })
+
   const characters =
     searchByName.length > 0
       ? psychonauts.filter(psychonaut =>
@@ -25,18 +32,9 @@ export const CharacterProvider = ({ children }: ProviderProps) => {
         )
       : psychonauts
 
-  async function getCharacters() {
-    const response = await api.get('/characters')
-    setPsychonauts(response.data)
-  }
-
-  useEffect(() => {
-    getCharacters()
-  }, [searchByName])
-
   return (
     <CharacterContext.Provider
-      value={{ characters, searchByName, setSearchByName }}
+      value={{ isLoading, characters, searchByName, setSearchByName }}
     >
       {children}
     </CharacterContext.Provider>

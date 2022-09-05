@@ -1,6 +1,6 @@
-import { IconProps } from 'phosphor-react'
 import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
+import { IconProps } from 'phosphor-react'
 import * as S from './styles'
 
 type InfoTextProps = {

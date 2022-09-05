@@ -1,18 +1,16 @@
-import * as Component from '../../components'
 import { CharacterPsychonautsDTO } from '../../DTOs/CharacterPsychonautsDTO'
 import { useCharacter } from '../../hooks/useCharacter'
+import * as Component from '../../components'
 import * as S from './styles'
 
 export function Psychonauts() {
-  const { characters, searchByName, setSearchByName } = useCharacter()
+  const { isLoading, characters, searchByName, setSearchByName } = useCharacter()
 
-  if(!characters){
-    return <h1>Loading...</h1>
+  if(isLoading){
+    return <Component.Loading />
   }
 
   return (
-    <>
-      {characters.length > 0 && (
         <S.PsychonautsContainer>
           <S.InputSearch
             type="search"
@@ -39,7 +37,5 @@ export function Psychonauts() {
             </S.PsychonautsContentCards>
           )}
         </S.PsychonautsContainer>
-      )}
-    </>
   )
 }

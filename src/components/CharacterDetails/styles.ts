@@ -77,8 +77,12 @@ export const PsychonautPsiPowers = styled.div`
   height: 100%;
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const PsychonautPsiPowerBox = styled.div`

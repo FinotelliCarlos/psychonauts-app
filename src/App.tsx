@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components'
 import { useTheme } from './hooks/useTheme'
-import { RoutesApp } from './routes'
 import { Global } from './styles/GlobalStyles'
+import { RoutesApp } from './routes'
 
 export default function App() {
   const { theme } = useTheme()

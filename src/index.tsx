@@ -1,21 +1,24 @@
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import { ThemeUsageProvider } from './contexts/ThemeContext'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { ThemeUsageProvider } from './contexts/ThemeContext'
 import { CharacterProvider } from './contexts/CharacterContext'
 import { FavoritesCharactersProvider } from './contexts/FavoritesCharactersContext'
+import App from './App'
+
 
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <FavoritesCharactersProvider>
-    <CharacterProvider>
-      <ThemeUsageProvider>
-        <QueryClientProvider client={queryClient}>
+  <QueryClientProvider client={queryClient}>
+    <ReactQueryDevtools />
+    <FavoritesCharactersProvider>
+      <CharacterProvider>
+        <ThemeUsageProvider>
           <App />
-        </QueryClientProvider>
-      </ThemeUsageProvider>
-    </CharacterProvider>
-  </FavoritesCharactersProvider>
+        </ThemeUsageProvider>
+      </CharacterProvider>
+    </FavoritesCharactersProvider>
+  </QueryClientProvider>
 )

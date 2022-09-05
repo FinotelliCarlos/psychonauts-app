@@ -1,7 +1,7 @@
-import { Person, Star } from 'phosphor-react'
 import { useContext } from 'react'
 import Switch from 'react-switch'
 import { ThemeContext } from 'styled-components'
+import { Person, Star } from 'phosphor-react'
 import { useTheme } from '../../hooks/useTheme'
 import * as S from './styles'
 
@@ -13,7 +13,7 @@ export function Header() {
     <S.HeaderContainer>
       <S.HeaderBox>
         <S.ContentBox>
-          <S.LogoPsychonauts src="psychonauts-logo.png" alt="Psychonauts" />
+          <S.LogoPsychonauts src="/psychonauts-logo.png" alt="Psychonauts" />
 
           <S.OptionsBox>
             <S.LinkOption to="/">
