@@ -19,13 +19,13 @@ export function CharacterDetails() {
   const { handleIncrementFavorite, handleRemoveFavorite, favorites } =
     useFavorites()
 
-  const [singleCharacter, setSingleCharacter] =
+  const [actualCharacter, setActualCharacter] =
     useState<CharacterPsychonautsDTO>({} as CharacterPsychonautsDTO)
 
   const { isLoading } = useQuery('characters', async () => {
     await api
       .get<CharacterPsychonautsDTO>(`/characters?name=${name}`)
-      .then(res => setSingleCharacter(res.data))
+      .then(res => setActualCharacter(res.data))
   })
 
   if (isLoading) {
@@ -38,19 +38,19 @@ export function CharacterDetails() {
 
   return (
     <S.CharacterDetailsContainer>
-      {singleCharacter.name ? (
+      {actualCharacter.name ? (
         <>
           <S.HeaderDetails>
             <S.BoxButtons>
-              {favorites.includes(singleCharacter) ? (
+              {favorites.includes(actualCharacter) ? (
                 <Component.Button
                   type="remove"
-                  onClick={() => handleRemoveFavorite(singleCharacter)}
+                  onClick={() => handleRemoveFavorite(actualCharacter)}
                 />
               ) : (
                 <Component.Button
                   type="add"
-                  onClick={() => handleIncrementFavorite(singleCharacter)}
+                  onClick={() => handleIncrementFavorite(actualCharacter)}
                 />
               )}
             </S.BoxButtons>
@@ -58,11 +58,11 @@ export function CharacterDetails() {
 
           <S.ContentDetails>
             <S.PsychonautDetails>
-              <S.PsychonautImage src={singleCharacter.img} />
+              <S.PsychonautImage src={actualCharacter.img} />
               <S.PsychonautInfoBox>
                 <Component.InfoText
                   subtitle="Nome:"
-                  title={`${singleCharacter.name.replace(
+                  title={`${actualCharacter.name.replace(
                     /(?:^|\s)\S/g,
                     function (letter) {
                       return letter.toUpperCase()
@@ -72,14 +72,16 @@ export function CharacterDetails() {
                 />
                 <Component.InfoText
                   subtitle="Gênero:"
-                  title={`${singleCharacter.gender === 'male' ? 'Macho' : 'Fêmea'}`}
+                  title={`${
+                    actualCharacter.gender === 'male' ? 'Macho' : 'Fêmea'
+                  }`}
                   icon={GenderIntersex}
                 />
               </S.PsychonautInfoBox>
             </S.PsychonautDetails>
 
             <S.PsychonautPsiPowers>
-              {singleCharacter.psiPowers.map((item, index) => {
+              {actualCharacter.psiPowers.map((item, index) => {
                 return (
                   <S.PsychonautPsiPowerBox key={index}>
                     <S.PsychonautPsiPowerImage src={item.img} />
