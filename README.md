@@ -1,46 +1,87 @@
-# Getting Started with Create React App
+<div align="center">
+  <img src="public/favicon.ico" />
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="left">
+  📋 <strong>Índice</strong>
+<br>
 
-## Available Scripts
+- [Sobre](#sobre)
+- [Tecnologias utilizadas](#technologies)
+- [Oque foi implementado](#implementations)
+- [Como executar o projeto](#run)
 
-In the project directory, you can run:
+</div>
+<br>
 
-### `yarn start`
+<div align="left" id="sobre">
+  📖 <strong>#Sobre</strong>
+  <br>
+  <br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A aplicação foi criada com o proposito de listar os personagens de Psyhonauts para que o fã do jogo possa ver detalhes sobre seus personagens favoritos.
+<br>
+<br>
+Esse clássico jogo de ação/aventura de plataforma dos aclamados desenvolvedores Double Fine Productions segue a história de um jovem psíquico chamado Razputin. Em sua busca para juntar-se aos Psychonauts – um grupo de elite de agentes secretos psíquicos internacionais– ele invade o centro de treinamento secreto do grupo: O Acampamento de Verão Psíquico Whispering Rock. Mas este não é um acampamento psíquico normal! Um misterioso vilão sequestrou os colegas campistas de Raz e roubou os seus cérebros. Agora ele precisa usar os seus poderes psíquicos de Telecinesia, Levitação e, acima de tudo, a sua habilidade de se projetar nas mentes dos outros – para encontrar os pontos soltos nos cérebros e evitar que eles caiam nas mãos erradas. Lute contra demônios mentais! Descubra memórias escondidas! Arrume a bagagem emocional! Explore a fantástica região da mente interior! Junte-se aos Psychonauts!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+</div>
+<br>
 
-### `yarn test`
+<div align="left" id="technologies">
+  🚀 <strong>#Tecnologias utilizadas</strong>
+<br>
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-### `yarn build`
+- React
+- Typescript
+- React-router
+- Axios
+- React-Query
+- Styled-components
+- Phosphor-react
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</div>
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<div align="left" id="implementations">
+  🚀 <strong>#Oque foi implementado?</strong>
+<br>
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Pensando na experiencia do usuário:
 
-### `yarn eject`
+- Thema Light & Dark
+- Você pode buscar personagens pelo nome
+- Há mensagens de alerta informando que o personagem não existe ou que não há favoritos salvos.
+- Salvando e excluindo personagens como favoritos.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+</div>
+<br>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<div align="center" id='run'>
+  ⌨ <strong>#Como executar o projeto</strong>
+<br>
+<br>
+<div align="left">
+  ⌨  <strong>#Você também pode abrir o projeto clicando <a href="https://gamepsychonauts.vercel.app/">aqui</a></strong>
+</div>
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+# Clonar o repositório
+git clone https://github.com/FinotelliCarlos/psychonauts-app
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Entrar no diretório
+cd psychonauts-app
 
-## Learn More
+# Baixar as dependências
+npm install | yarn
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Executar o servidor
+npm run start | yarn start
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+
+</div>
