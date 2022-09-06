@@ -24,13 +24,13 @@ export function Psychonauts() {
         onChange={e => setSearchByName(e.target.value.toLowerCase())}
       />
       
-      {characters.length <= 0 && (
+      {characters!.length <= 0 && (
         <Component.Alert title="Não há personagens com este nome..." />
       )}
 
-      {characters.length >= 1 && (
+      {characters!.length >= 1 && (
         <S.PsychonautsContentCards>
-          {characters.map((item: CharacterPsychonautsDTO, index) => {
+          {characters?.map((item: CharacterPsychonautsDTO, index) => {
             return (
               <Component.Character
                 key={index}

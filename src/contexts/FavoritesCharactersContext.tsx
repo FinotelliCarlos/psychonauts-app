@@ -3,7 +3,7 @@ import { CharacterPsychonautsDTO } from '../DTOs/CharacterPsychonautsDTO'
 import { useFavoritesLocal } from '../utils/useFavoritesLocal'
 
 type ContextProps = {
-  favorites: CharacterPsychonautsDTO[]
+  favorites: CharacterPsychonautsDTO[] 
   handleIncrementFavorite: (item: CharacterPsychonautsDTO) => void
   handleRemoveFavorite: (item: CharacterPsychonautsDTO) => void
 }
