@@ -5,13 +5,15 @@ import * as S from './styles'
 
 type ButtonProps = {
   type: 'remove' | 'add'
+  onClick: () => void
 }
 
-export function Button({ type }: ButtonProps) {
+export function Button({ type, onClick }: ButtonProps) {
   const { colors } = useContext(ThemeContext)
 
   return (
     <S.ButtonContainer
+    onClick={onClick}
       style={{
         background: `${type === 'remove' ? colors.alert : colors.pressable}`
       }}

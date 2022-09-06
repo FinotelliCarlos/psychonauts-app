@@ -4,8 +4,8 @@ import { useFavoritesLocal } from '../utils/useFavoritesLocal'
 
 type ContextProps = {
   favorites: CharacterPsychonautsDTO[]
-  handleIncrementFavorite: () => void
-  handleRemoveFavorite: () => void
+  handleIncrementFavorite: (item: CharacterPsychonautsDTO) => void
+  handleRemoveFavorite: (item: CharacterPsychonautsDTO) => void
 }
 
 type ProviderProps = {
@@ -21,14 +21,16 @@ export const FavoritesCharactersProvider = ({ children }: ProviderProps) => {
     CharacterPsychonautsDTO[]
   >('favorites', [])
 
-  function handleRemoveFavorite() {
-    //
-    setFavorites([])
+  function handleIncrementFavorite(item: CharacterPsychonautsDTO) {
+    setFavorites(oldState => [...oldState, item])
+    localStorage.setItem('favorites', `${item}`)
   }
 
-  function handleIncrementFavorite() {
-    //
-    setFavorites([])
+  function handleRemoveFavorite(item: CharacterPsychonautsDTO) {
+    setFavorites(oldState =>
+      oldState.filter(character => character.name !== item.name)
+    )
+    localStorage.setItem('favorites', `${item}`)
   }
 
   return (

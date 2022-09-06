@@ -18,7 +18,6 @@ type CardProps = {
 export function Character({ img, name, gender, psiPowers }: CardProps) {
   const amountOfPowers = psiPowers.length
   const typeOfGender = gender === 'male' ? 'Macho' : 'Fêmea'
-  const nameOfPsychonaut = name[0].toUpperCase() + name.substring(1)
 
   return (
     <S.CardContainer>
@@ -26,7 +25,9 @@ export function Character({ img, name, gender, psiPowers }: CardProps) {
         <S.DataCard>
           <Component.InfoText
             subtitle="Nome:"
-            title={`${nameOfPsychonaut}`}
+            title={`${name.replace(/(?:^|\s)\S/g, function (letter) {
+              return letter.toUpperCase()
+            })}`}
             icon={IdentificationCard}
           />
 
@@ -43,7 +44,7 @@ export function Character({ img, name, gender, psiPowers }: CardProps) {
           />
         </S.DataCard>
 
-        <S.ButtonSeeMore to={`characters/${name}`}>
+        <S.ButtonSeeMore to={`${name}`}>
           <DotsThreeOutlineVertical />
           Conhecer melhor
         </S.ButtonSeeMore>

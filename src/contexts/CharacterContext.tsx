@@ -20,7 +20,7 @@ export const CharacterProvider = ({ children }: ProviderProps) => {
   const [psychonauts, setPsychonauts] = useState<CharacterPsychonautsDTO[]>([])
   const [searchByName, setSearchByName] = useState('')
 
-  const { isLoading } = useQuery('psychonautsData', async () => {
+  const { isLoading } = useQuery('characters', async () => {
     await api
       .get<CharacterPsychonautsDTO[]>('/characters')
       .then(res => setPsychonauts(res.data))

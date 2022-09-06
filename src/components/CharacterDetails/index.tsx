@@ -15,19 +15,18 @@ import { useFavorites } from '../../hooks/useFavorites'
 
 export function CharacterDetails() {
   const { name } = useParams()
-  const { favorites } = useFavorites()
+
+  const { handleIncrementFavorite, handleRemoveFavorite, favorites } =
+    useFavorites()
 
   const [singleCharacter, setSingleCharacter] =
-    useState<CharacterPsychonautsDTO | null>(null)
-  const { isLoading, error } = useQuery('psychonautsData', async () => {
+    useState<CharacterPsychonautsDTO>({} as CharacterPsychonautsDTO)
+
+  const { isLoading } = useQuery('characters', async () => {
     await api
       .get<CharacterPsychonautsDTO>(`/characters?name=${name}`)
       .then(res => setSingleCharacter(res.data))
   })
-
-  // const characterExistsByFavorites = singleCharacter.filter(({character}:{character : CharacterPsychonautsDTO[]}) => character.name.toLowerCase().includes(favorites)) ? true : false
-
-  const typeOfGender = singleCharacter?.gender === 'male' ? 'Macho' : 'Fêmea'
 
   if (isLoading) {
     return (
@@ -37,54 +36,72 @@ export function CharacterDetails() {
     )
   }
 
-  if (error) return <h1>{`An error has occurred: ${error}`}</h1>
-
   return (
     <S.CharacterDetailsContainer>
-      <S.HeaderDetails>
-        <S.BoxButtons>
-          <Component.Button type="add" />
-          <Component.Button type="remove" />
-        </S.BoxButtons>
-      </S.HeaderDetails>
+      {singleCharacter.name ? (
+        <>
+          <S.HeaderDetails>
+            <S.BoxButtons>
+              {favorites.includes(singleCharacter) ? (
+                <Component.Button
+                  type="remove"
+                  onClick={() => handleRemoveFavorite(singleCharacter)}
+                />
+              ) : (
+                <Component.Button
+                  type="add"
+                  onClick={() => handleIncrementFavorite(singleCharacter)}
+                />
+              )}
+            </S.BoxButtons>
+          </S.HeaderDetails>
 
-      <S.ContentDetails>
-        <S.PsychonautDetails>
-          <S.PsychonautImage src={singleCharacter?.img} />
-          <S.PsychonautInfoBox>
-            <Component.InfoText
-              subtitle="Nome:"
-              title={`${singleCharacter?.name}`}
-              icon={IdentificationCard}
-            />
-            <Component.InfoText
-              subtitle="Gênero:"
-              title={`${typeOfGender}`}
-              icon={GenderIntersex}
-            />
-          </S.PsychonautInfoBox>
-        </S.PsychonautDetails>
-
-        <S.PsychonautPsiPowers>
-          {singleCharacter?.psiPowers.map((item, index) => {
-            return (
-              <S.PsychonautPsiPowerBox key={index}>
-                <S.PsychonautPsiPowerImage src={item.img} />
+          <S.ContentDetails>
+            <S.PsychonautDetails>
+              <S.PsychonautImage src={singleCharacter.img} />
+              <S.PsychonautInfoBox>
                 <Component.InfoText
-                  subtitle="Poder:"
-                  title={`${item.name}`}
-                  icon={HandFist}
+                  subtitle="Nome:"
+                  title={`${singleCharacter.name.replace(
+                    /(?:^|\s)\S/g,
+                    function (letter) {
+                      return letter.toUpperCase()
+                    }
+                  )}`}
+                  icon={IdentificationCard}
                 />
                 <Component.InfoText
-                  subtitle="Detalhes do poder:"
-                  title={`${item.description}`}
-                  icon={TextAlignLeft}
+                  subtitle="Gênero:"
+                  title={`${singleCharacter.gender === 'male' ? 'Macho' : 'Fêmea'}`}
+                  icon={GenderIntersex}
                 />
-              </S.PsychonautPsiPowerBox>
-            )
-          })}
-        </S.PsychonautPsiPowers>
-      </S.ContentDetails>
+              </S.PsychonautInfoBox>
+            </S.PsychonautDetails>
+
+            <S.PsychonautPsiPowers>
+              {singleCharacter?.psiPowers.map((item, index) => {
+                return (
+                  <S.PsychonautPsiPowerBox key={index}>
+                    <S.PsychonautPsiPowerImage src={item.img} />
+                    <Component.InfoText
+                      subtitle="Poder:"
+                      title={`${item.name}`}
+                      icon={HandFist}
+                    />
+                    <Component.InfoText
+                      subtitle="Detalhes do poder:"
+                      title={`${item.description}`}
+                      icon={TextAlignLeft}
+                    />
+                  </S.PsychonautPsiPowerBox>
+                )
+              })}
+            </S.PsychonautPsiPowers>
+          </S.ContentDetails>
+        </>
+      ) : (
+        <Component.Loading />
+      )}
     </S.CharacterDetailsContainer>
   )
 }

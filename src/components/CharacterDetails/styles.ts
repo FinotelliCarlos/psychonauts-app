@@ -2,10 +2,13 @@ import styled from 'styled-components'
 
 export const CharacterDetailsContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 
   width: 90%;
   height: 100%;
+  min-height: 50vh;
   background: ${props => props.theme.colors.primary};
   border-radius: 0.7rem;
 

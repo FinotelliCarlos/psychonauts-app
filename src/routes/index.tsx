@@ -8,7 +8,11 @@ export function RoutesApp() {
         <Route path="/" element={<Screen.Home />} />
         <Route path="/favorites" element={<Screen.Favorites />} />
         <Route
-          path="/characters/:name"
+          path="/:name"
+          element={<Screen.Details />}
+        />
+                <Route
+          path="/favorites/:name"
           element={<Screen.Details />}
         />
       </Routes>
