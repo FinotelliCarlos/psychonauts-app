@@ -1,11 +1,12 @@
-import { useState } from 'react'
-import { useQuery } from 'react-query'
+
 import {
   GenderIntersex,
   HandFist,
   IdentificationCard,
   TextAlignLeft
 } from 'phosphor-react'
+import { useState } from 'react'
+import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
 import { CharacterPsychonautsDTO } from '../../DTOs/CharacterPsychonautsDTO'
 import { api } from '../../services/api'
