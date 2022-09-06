@@ -7,5 +7,5 @@ export const PsychonautsContainer = styled.main`
   flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 5rem;
-  width: 100vw;
+  width: 100%;
 `

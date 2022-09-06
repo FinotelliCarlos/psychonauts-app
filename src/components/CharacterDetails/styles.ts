@@ -72,7 +72,7 @@ export const PsychonautDetails = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `
 
 export const PsychonautPsiPowers = styled.div`
@@ -94,15 +94,17 @@ export const PsychonautPsiPowerBox = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 
-  padding: 1rem;
+  padding: 0.5rem;
 
-  border-radius: 0.4rem;
+  gap: 0.4rem;
 
   background: ${props => props.theme.colors.background};
+  border-radius: 0.4rem;
 `
 
 export const PsychonautPsiPowerImage = styled.img`
-  width: 5.3rem;
+  width: 3.2rem;
+  border-radius: 1rem;
 `
 
 export const ContainerLoading = styled.div`

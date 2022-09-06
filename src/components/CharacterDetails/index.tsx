@@ -79,7 +79,7 @@ export function CharacterDetails() {
             </S.PsychonautDetails>
 
             <S.PsychonautPsiPowers>
-              {singleCharacter?.psiPowers.map((item, index) => {
+              {singleCharacter.psiPowers.map((item, index) => {
                 return (
                   <S.PsychonautPsiPowerBox key={index}>
                     <S.PsychonautPsiPowerImage src={item.img} />

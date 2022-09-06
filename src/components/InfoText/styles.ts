@@ -9,8 +9,10 @@ export const InfoTextContainer = styled.div`
 
 export const TextBox = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.3rem;
 `
 
 export const InfoSubTitle = styled.p`

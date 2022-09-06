@@ -11,6 +11,8 @@ export const CardContainer = styled.div`
     rgba(108, 117, 125, 0.45841112323835786) 44%,
     rgba(131, 139, 145, 1) 84%
   );
+
+  border: 2px solid ${props => props.theme.colors.primary};
   border-radius: 0.6rem;
 
   width: 100%;
@@ -38,23 +40,11 @@ export const ContentBoxInCard = styled.div`
   width: 100%;
   height: 100%;
 
-  padding: 1rem 0.4rem;
+  padding: 0.7rem 0.4rem;
 `
 
 export const DataCard = styled.div`
   width: 100%;
-`
-
-export const CardPsychonautInfo = styled.p`
-  font-size: 1rem;
-  font-weight: 700;
-  color: ${props => props.theme.colors.font100};
-`
-
-export const CardPsychonautData = styled.span`
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: ${props => props.theme.colors.font200};
 `
 
 export const ButtonSeeMore = styled(Link)`
