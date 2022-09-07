@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { DefaultTheme } from 'styled-components'
-import { dark, light } from '../Theme'
 import { useThemeLocal } from '../utils/useThemeLocal'
+import { dark, light } from '../Theme'
 
 type ContextProps = {
   theme: DefaultTheme

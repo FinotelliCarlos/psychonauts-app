@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import Switch from 'react-switch'
 import { ThemeContext } from 'styled-components'
-import { Person, Star } from 'phosphor-react'
 import { useTheme } from '../../hooks/useTheme'
+import { Person, Star } from 'phosphor-react'
 import * as S from './styles'
 
 export function Header() {
